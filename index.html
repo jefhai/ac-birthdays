@@ -5,21 +5,37 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width initial-scale=1.0" />
         <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link href='https://fonts.googleapis.com/css?family=Dekko' rel='stylesheet'>
         <script src="js/jquery-3.4.1.min.js"></script>
+        <script src="js/moment.js"></script>
         <meta name="description" content="Study Animal Crossing Birthdays">
     </head>
-    <body>
+    <body style="font-family: 'Dekko';">
         <header>
-            <h1>Let's Study Animal Crossing Birthdays!</h1>
+            <h1 class="h1">
+                Unofficial Animal Crossing birthday study guide!
+            </h1>
         </header>
     	<main>
-    		<h2 id="name"></h2>
+    	
             <section>
-                <img id="image" />
-                <h3 id="birthday"></h3>
+                <h2 id="name" class="h2"></h2>
+                <img id="image" class="animalImage" />
+                <h3 id="birthday" class="h3"></h3>
+                <br/>
+                <button OnClick="next()" class="nextButton">Next</button>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
             </section>
+
             <script type="text/javascript">
                 var characters = [];
+                var curIndex = 0;
 
                 $.getJSON("birthdays.json", function(json) {
                     $.each(json, function () {
@@ -29,22 +45,37 @@
                         $.ajax({
                             url: imageUrl,
                             success: function(html) {
+                                var birthday = moment(obj["birthday"], "DD-MM-YYYY").format("MMM Do YYYY");
                                 var char = {  
                                     name: obj["name"],
-                                    birthday: obj["birthday"],
+                                    birthday: birthday,
                                     image: imageUrl
                                 };
                                 characters.push(char);
+                            },
+                            error: function() {
+
                             },
                             async:false
                         });
                     });
 
-                    console.log("here");
                     characters = shuffle(characters);
-                    load(characters[0]);
+                    curIndex = 0;
+                    load(characters[curIndex]);
                 });
                 
+                function next() {
+                    if (curIndex == characters.length - 1) {
+                        curIndex = 0;
+                        load(characters[curIndex]);
+                    }
+                    else {
+                        load(characters[++curIndex]);
+                    }
+
+                }
+
                 /**
                  * Shuffles array in place.
                  * @param {Array} a items An array containing the items.
@@ -70,6 +101,7 @@
             </script>
     	</main>
         <footer>
+            <p class="footer"><a href="https://www.copyright.gov/fair-use/">FAIR USE</a>. For Education Purposes Only. © 2001 - 2017 Nintendo. Nintendo properties are trademarks of Nintendo. Images and data from <a href="https://animal-crossing.com">http://animal-crossing.com</a>.</p>
         </footer>
     </body>
 </html>
