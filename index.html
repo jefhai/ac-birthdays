@@ -42,22 +42,13 @@
                         var obj = this;
                         var imageUrl = "img/"+obj["name"]+".png";
 
-                        $.ajax({
-                            url: imageUrl,
-                            success: function(html) {
-                                var birthday = moment(obj["birthday"], "DD-MM-YYYY").format("MMM Do YYYY");
-                                var char = {  
-                                    name: obj["name"],
-                                    birthday: birthday,
-                                    image: imageUrl
-                                };
-                                characters.push(char);
-                            },
-                            error: function() {
-
-                            },
-                            async:false
-                        });
+                        var birthday = moment(obj["birthday"], "DD-MM-YYYY").format("MMM Do YYYY");
+                        var char = {  
+                            name: obj["name"],
+                            birthday: birthday,
+                            image: imageUrl
+                        };
+                        characters.push(char);
                     });
 
                     characters = shuffle(characters);
