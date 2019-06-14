@@ -8,6 +8,6 @@ Non-profit, educational or personal use tips the balance in favor of fair use.
 
 U.S. COPYRIGHT OFFICE- FAIR USE DEFINITION
 
-(Source: http://www.copyright.gov/fls/fl102.html)
+(Source: https://www.copyright.gov/fair-use/)
 
 © 2001 - 2017 Nintendo. Nintendo properties are trademarks of Nintendo. 
