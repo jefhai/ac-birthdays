@@ -6,8 +6,8 @@ Fair use is a use permitted by copyright statute that might otherwise be infring
 
 Non-profit, educational or personal use tips the balance in favor of fair use. 
 
-FAIR USE DEFINITION:
+U.S. COPYRIGHT OFFICE- FAIR USE DEFINITION
 
-(Source: http://en.wikipedia.org/wiki/Fair_use)
+(Source: http://www.copyright.gov/fls/fl102.html)
 
 © 2001 - 2017 Nintendo. Nintendo properties are trademarks of Nintendo. 
