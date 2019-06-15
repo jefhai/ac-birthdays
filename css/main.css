@@ -21,7 +21,7 @@ body {
 	width: 100%;
 	font-size: 55px;
 	color: #ff8305;
-	padding: 30px 0px;
+	padding: 10px 0px;
 }
 
 .h3 {
@@ -32,7 +32,7 @@ body {
 	font-weight: medium;
 	font-size: 35px;
 	color: #ff8305;
-	padding: 20px 0px 0px 0px;
+	padding: 10px 0px 0px 0px;
 }
 
 .animalImage {
@@ -50,10 +50,11 @@ body {
 	color: #ff3c32;
 	background-color: #ffa432;
 	border-radius: 10px;
-	padding: 14px 30px;
+	padding: 10px 30px;
 }
 
 .searchDiv {
+	padding: 10px 0px;
 	display: flex;
     flex-direction: row;
     flex-wrap: wrap;
