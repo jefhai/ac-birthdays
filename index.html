@@ -5,6 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width initial-scale=1.0" />
         <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
         <link href='https://fonts.googleapis.com/css?family=Dekko' rel='stylesheet'>
         <script src="js/jquery-3.4.1.min.js"></script>
         <script src="js/moment.js"></script>
@@ -34,6 +35,12 @@
                 <br/>
                 <button onclick="next()" class="nextButton">Next</button>
                 <br/>
+                <div>
+                    <div class="searchDiv"> 
+                        <input id="search" placeholder="Search" class="searchInput" />
+                        <button onclick="search()" class="searchButton"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
                 <br/>
                 <br/>
                 <br/>
@@ -43,37 +50,66 @@
             </section>
 
             <script type="text/javascript">
-                var characters = [];
-                var curIndex = 0;
+                var state = {
+                    characters: [],
+                    curIndex: 0
+                }
 
                 $.getJSON("birthdays.json", function(json) {
                     $.each(json, function () {
                         var obj = this;
                         var imageUrl = "img/"+obj["name"]+".png";
-
                         var birthday = moment(obj["birthday"], "DD-MM-YYYY").format("MMM Do YYYY");
                         var char = {  
                             name: obj["name"],
                             birthday: birthday,
                             image: imageUrl
                         };
-                        characters.push(char);
+                        state.characters.push(char);
                     });
 
-                    characters = shuffle(characters);
-                    curIndex = 0;
-                    load(characters[curIndex]);
+                    state.characters = shuffle(state.characters);
+                    state.curIndex = 0;
+                    load(state.characters[state.curIndex]);
                 });
                 
                 function next() {
-                    if (curIndex == characters.length - 1) {
-                        curIndex = 0;
-                        load(characters[curIndex]);
+                    loadNextItem(state);
+                }
+
+                function loadNextItem(state) {
+                    if (state.curIndex == state.characters.length - 1) {
+                        state.curIndex = 0;
+                        load(state.characters[state.curIndex]);
                     }
                     else {
-                        load(characters[++curIndex]);
+                        load(state.characters[++state.curIndex]);
                     }
+                }
 
+                var searchState = {
+                    searchFor: null,
+                    characters: [],
+                    curIndex: 0
+                }
+
+                function search() {
+                    var searchFor = $("#search").val().trim();
+                    if (searchFor.length == 0)
+                        return;
+                    if (searchFor === searchState.searchFor) {
+                        loadNextItem(searchState);
+                    } else {
+                        searchState.searchFor = searchFor;
+                        var re = new RegExp(searchFor+'.+$', 'i');
+                        searchState.characters = state.characters.filter(function(e, i, a) {
+                            return e["name"].search(re) != -1;
+                        });
+                        if (searchState.characters.length > 0) {
+                            searchState.curIndex = 0;                          
+                            load(searchState.characters[searchState.curIndex]);
+                        }
+                    }
                 }
 
                 /**
