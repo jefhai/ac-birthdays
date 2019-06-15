@@ -110,6 +110,14 @@
                     }
                 }
 
+                document.getElementById('search').onkeypress = function(e){
+                    if (!e) e = window.event;
+                    var keyCode = e.keyCode || e.which;
+                    if (keyCode == '13'){
+                        search()
+                    }
+                }
+                
                 /**
                  * Shuffles array in place.
                  * @param {Array} a items An array containing the items.
