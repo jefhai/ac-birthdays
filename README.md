@@ -10,4 +10,4 @@ U.S. COPYRIGHT OFFICE- FAIR USE DEFINITION
 
 (Source: https://www.copyright.gov/fair-use/)
 
-© 2001 - 2017 Nintendo. Nintendo properties are trademarks of Nintendo. 
+© 2001 - 2020 Nintendo. Nintendo properties are trademarks of Nintendo. 

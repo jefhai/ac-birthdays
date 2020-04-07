@@ -216,6 +216,12 @@
         "image": "CTRP_EAA_NPC-bul01_1_R_ad.png"
     },
     {
+        "id": 37,
+        "name": "Stu",
+        "birthday": "20-04-2000",
+        "image": "CTRP_EAA_NPC-bul03_1_R_ad.png"
+    },
+    {
         "id": 38,
         "name": "T-Bone",
         "birthday": "20-05-2000",
@@ -2614,5 +2620,23 @@
         "name": "Rover",
         "birthday": "01-02-2000",
         "image": "CTRP_EAA_NSP-xct01_R_ad.png"
+    },
+    {
+        "id": 438,
+        "name": "Giovanni",
+        "birthday": "05-09-2000",
+        "image": "SMDP_ZAC_NSP-cwa01_01_R_ad-0.png"
+    },
+    {
+        "id": 439,
+        "name": "Beppe",
+        "birthday": "17-07-2000",
+        "image": "SMDP_ZAC_NSP-cwc01_01_R_ad-0.png"
+    },
+    {
+        "id": 440,
+        "name": "Carlo",
+        "birthday": "02-05-2000",
+        "image": "SMDP_ZAC_NSP-cwb01_01_R_ad-0.png"
     }
 ]
