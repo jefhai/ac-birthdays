@@ -1,13 +1,4 @@
-**FAIR USE**
+CC BY-SA 3.0 ac-birthdays is neither owned by nor affiliated with Nintendo or the creators of Animal Crossing. © 2001 - 2020 Nintendo. Nintendo properties are trademarks of Nintendo. Images and data from https://animal-crossing.com and https://nookipedia.com.
 
-Copyright Disclaimer under section 107 of the Copyright Act 1976, allowance is made for “fair use” for purposes such as criticism, comment, news reporting, teaching, scholarship, **education and research**.
-
-Fair use is a use permitted by copyright statute that might otherwise be infringing. 
-
-Non-profit, educational or personal use tips the balance in favor of fair use. 
-
-U.S. COPYRIGHT OFFICE- FAIR USE DEFINITION
-
-(Source: https://www.copyright.gov/fair-use/)
-
-© 2001 - 2020 Nintendo. Nintendo properties are trademarks of Nintendo. 
+License:
+https://creativecommons.org/licenses/by-sa/3.0/legalcode

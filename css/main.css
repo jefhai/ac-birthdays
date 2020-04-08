@@ -142,11 +142,18 @@ body {
 .footer {
 	display: block;
 	margin: 0 auto;
-	font-size: 23px;
+	font-size: 16px;
 	font-weight: small;
 	border: none;
 	color: #ff3c32;
-	background-color: #ffa432;
+	max-width: 600px;
+}
+
+.footerLink {
+	color: #ff3c32;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 16px;
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
