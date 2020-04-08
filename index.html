@@ -3,7 +3,7 @@
 	<head>
   		<title>Animal Crossing Birthdays</title>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width initial-scale=1.0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0"/>
         <link rel="stylesheet" type="text/css" href="css/main.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
         <link href='https://fonts.googleapis.com/css?family=Dekko' rel='stylesheet'>
@@ -23,24 +23,37 @@
     <body style="font-family: 'Dekko';">
         <header>
             <h1 class="h1">
-                Unofficial Animal Crossing birthday study guide!
+                Unofficial
+            </h1>
+            <h1 class="h1">
+                Animal Crossing
+            </h1>
+            <h1 class="h1">
+                birthday study guide!
             </h1>
         </header>
     	<main>
-    	
             <section>
                 <h2 id="name" class="h2"></h2>
-                <img id="image" onclick="next()" class="animalImage" />
+                <div class="portraitDiv">
+                    <img id="characterImg" class="characterImage" onclick="next()" class="animalImage" />
+                    <img class="nookipediaImg" onclick="nookipedia()" src="img/nookipedia.png" />
+                </div>
                 <h3 id="birthday" class="h3"></h3>
-                <button onclick="next()" class="nextButton">Next</button>
-                <div>
-                    <div class="searchDiv"> 
-                        <input id="search" placeholder="Search" class="searchInput" />
-                        <button onclick="search()" class="searchButton"><i class="fas fa-search"></i></button>
-                    </div>
+                <div class="rowDiv">
+                    <button onclick="random()" class="largeButton">Random</button>
+                    <button onclick="back()" class="thinButton"><i class="fas fa-chevron-left icon"></i></button>
+                    <button onclick="next()" class="thinButton"><i class="fas fa-chevron-right icon"></i></button>
+                </div>
+                <div class="rowDiv"> 
+                    <input id="search" placeholder="Search" class="searchInput" />
+                    <button onclick="search()" class="thinButton"><i class="fas fa-search icon"></i></button>
                 </div>
                 <br/>
                 <br/>
+                <div class="attrDiv">
+                    <p class="attrPar">Created by <a class="attrLink" href="https://jefhai.com">jefhai.com</a></p>
+                </div>
                 <br/>
                 <br/>
                 <br/>
@@ -50,14 +63,15 @@
             <script type="text/javascript">
                 var state = {
                     characters: [],
-                    curIndex: 0
+                    curIndex: 0,
+                    prevIndex: 0
                 }
 
                 $.getJSON("birthdays.json", function(json) {
                     $.each(json, function () {
                         var obj = this;
-                        var imageUrl = "img/"+obj["name"]+".png";
-                        var birthday = moment(obj["birthday"], "DD-MM-YYYY").format("MMM Do YYYY");
+                        var imageUrl = "img/characters/"+obj["name"]+".png";
+                        var birthday = moment(obj["birthday"], "DD-MM-YYYY");
                         var char = {  
                             name: obj["name"],
                             birthday: birthday,
@@ -66,23 +80,61 @@
                         state.characters.push(char);
                     });
 
-                    state.characters = shuffle(state.characters);
-                    state.curIndex = 0;
-                    load(state.characters[state.curIndex]);
+                    sortByBirthday(state.characters);
+                    loadInitialVillager();
+                    preloadCharacterImages();
                 });
-                
-                function next() {
-                    loadNextItem(state);
+
+                function preloadCharacterImages() {
+                    for (i = 0; i <= state.characters.length - 1; i++) {
+                        preloadImage(state.characters[i].imageUrl);
+                    }
                 }
 
-                function loadNextItem(state) {
-                    if (state.curIndex == state.characters.length - 1) {
-                        state.curIndex = 0;
-                        load(state.characters[state.curIndex]);
+                function preloadImage(url)
+                {
+                    var img=new Image();
+                    img.src=url;
+                }
+
+                function loadInitialVillager() {
+                    var i;
+                    for (i = 0; i <= state.characters.length - 1; i++) {
+                        var charBirthday = state.characters[i].birthday;
+                        var currentDate = moment();
+                        if (   ( charBirthday.month() == currentDate.month()
+                            && charBirthday.date() == currentDate.date() )
+                            || ( charBirthday.month() == currentDate.month()
+                            && charBirthday.date() > currentDate.date() ) ) {
+                            state.curIndex = i;
+                            break;
+                        }
                     }
+                    load(state.characters[state.curIndex])
+                }
+
+                function random() {
+                    var rngIndex = Math.floor(state.characters.length * Math.random());
+                    state.curIndex = rngIndex;
+                    load(state.characters[rngIndex])
+                }
+
+                function back() {
+                    if (state.curIndex <= 0)
+                        state.curIndex = state.characters.length;
                     else {
-                        load(state.characters[++state.curIndex]);
+                        state.curIndex--;
                     }
+                    load(state.characters[state.curIndex]);
+                }
+                
+                function next() {
+                    if (state.curIndex >= state.characters.length)
+                        state.curIndex = 0;
+                    else {
+                        state.curIndex++;
+                    }
+                    load(state.characters[state.curIndex]);
                 }
 
                 var searchState = {
@@ -96,7 +148,12 @@
                     if (searchFor.length == 0)
                         return;
                     if (searchFor === searchState.searchFor) {
-                        loadNextItem(searchState);
+                        if (searchState.curIndex >= searchState.characters.length)
+                            searchState.curIndex = 0;
+                        else {
+                            searchState.curIndex++;
+                        }
+                        load(searchState.characters[searchState.curIndex]);
                     } else {
                         searchState.searchFor = searchFor;
                         var re = new RegExp(searchFor+'.+$', 'i');
@@ -113,33 +170,28 @@
                 document.getElementById('search').onkeypress = function(e){
                     if (!e) e = window.event;
                     var keyCode = e.keyCode || e.which;
-                    if (keyCode == '13'){
+                    if (keyCode == '13') {
                         search()
                     }
                 }
-                
-                /**
-                 * Shuffles array in place.
-                 * @param {Array} a items An array containing the items.
-                 * https://stackoverflow.com/a/6274381/4102299
-                 */
-                function shuffle(a) {
-                    var j, x, i;
-                    for (i = a.length - 1; i > 0; i--) {
-                        j = Math.floor(Math.random() * (i + 1));
-                        x = a[i];
-                        a[i] = a[j];
-                        a[j] = x;
-                    }
-                    return a;
+
+                function sortByBirthday(a) {
+                    a.sort(compareBirthday);
+                }
+
+                function compareBirthday(a, b) {
+                    return a.birthday.utc() > b.birthday.utc() ? 1 : -1;  
                 }
  
                 function load(obj) {
                     $("#name").text(obj["name"]);
-                    $("#image").attr("src", obj["image"]);
-                    $("#birthday").text(obj["birthday"]);
+                    $("#characterImg").attr("src", obj["image"]);
+                    $("#birthday").text(obj["birthday"].format("MMM Do YYYY"));
                 }
 
+                function nookipedia() {
+                    window.open("https://nookipedia.com/wiki/" + encodeURIComponent(state.characters[state.curIndex].name))
+                }
             </script>
     	</main>
         <footer>
