@@ -23,9 +23,6 @@
     <body style="font-family: 'Dekko';">
         <header>
             <h1 class="h1">
-                Unofficial
-            </h1>
-            <h1 class="h1">
                 Animal Crossing
             </h1>
             <h1 class="h1">
@@ -51,9 +48,6 @@
                 </div>
                 <br/>
                 <br/>
-                <div class="attrDiv">
-                    <p class="attrPar">Created by <a class="attrLink" href="https://jefhai.com">jefhai.com</a></p>
-                </div>
                 <br/>
             </section>
 
@@ -77,7 +71,6 @@
                         state.characters.push(char);
                     });
 
-                    sortByBirthday(state.characters);
                     loadInitialVillager();
                     preloadCharacterImages();
                 });
@@ -90,23 +83,42 @@
 
                 function preloadImage(url)
                 {
-                    var img=new Image();
-                    img.src=url;
+                    var img = new Image();
+                    img.src = url;
+                }
+
+                function isBirthday(birthdate) {
+                    var currentDate = moment();
+                    if (   birthdate.month() == currentDate.month()
+                        && birthdate.date() == currentDate.date()) {
+                        return true;
+                    }
+                    return false;
+                }
+
+                function isUpcommingBirthday(birthdate) {
+                    var currentDate = moment();
+                    if (   birthdate.month() == currentDate.month()
+                        && birthdate.date() >= currentDate.date()) {
+                        return true;
+                    }
+                    return false;
                 }
 
                 function loadInitialVillager() {
+                    // Note: sourced birthdays.json from Nintendo is not sorted by birthdate
+                    sortByBirthday(state.characters);
+
                     var i;
                     for (i = 0; i <= state.characters.length - 1; i++) {
-                        var charBirthday = state.characters[i].birthday;
-                        var currentDate = moment();
-                        if (   ( charBirthday.month() == currentDate.month()
-                            && charBirthday.date() == currentDate.date() )
-                            || ( charBirthday.month() == currentDate.month()
-                            && charBirthday.date() > currentDate.date() ) ) {
+                        var charBirthdate = state.characters[i].birthday;
+                        if (   isBirthday(charBirthdate)
+                            || isUpcommingBirthday(charBirthdate) ) {
                             state.curIndex = i;
                             break;
                         }
                     }
+
                     load(state.characters[state.curIndex])
                 }
 
@@ -153,9 +165,8 @@
                         load(searchState.characters[searchState.curIndex]);
                     } else {
                         searchState.searchFor = searchFor;
-                        var re = new RegExp(searchFor+'.+$', 'i');
                         searchState.characters = state.characters.filter(function(e, i, a) {
-                            return e["name"].search(re) != -1;
+                            return e["name"].includes(searchFor) || e["name"] == searchFor;
                         });
                         if (searchState.characters.length > 0) {
                             searchState.curIndex = 0;                          
@@ -181,9 +192,16 @@
                 }
  
                 function load(obj) {
-                    $("#name").text(obj["name"]);
-                    $("#characterImg").attr("src", obj["image"]);
-                    $("#birthday").text(obj["birthday"].format("MMM Do YYYY"));
+                    var _img = document.getElementById('characterImg');
+                    _img.onload = function() {
+                        $("#name").text(obj["name"]);
+                        $("#birthday").text(obj["birthday"].format("MMM Do YYYY"));
+                    }
+                    _img.onerror = function() {
+                        $("#name").text(obj["name"]);
+                        $("#birthday").text(obj["birthday"].format("MMM Do YYYY"));
+                    }
+                    _img.src = obj["image"];
                 }
 
                 function nookipedia() {

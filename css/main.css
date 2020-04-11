@@ -58,6 +58,7 @@ body {
 	font-size: 20px;
 	font-weight: bold;
 	border: none;
+	cursor: pointer;
 	color: #ff3c32;
 	background-color: #ffa432;
 	border-radius: 10px;
@@ -70,6 +71,7 @@ body {
 	font-size: 20px;
 	font-weight: bold;
 	border: none;
+	cursor: pointer;
 	color: #ff3c32;
 	background-color: #ffa432;
 	border-radius: 10px;
@@ -127,6 +129,7 @@ body {
   height: 330px;
   cursor: pointer;
   z-index: 1;
+  border: 0;
 }
 
 .nookipediaImg {
@@ -137,6 +140,7 @@ body {
   height: 70px;
   cursor: pointer;
   z-index: 2;
+  border: 0;
 }
 
 .footer {
