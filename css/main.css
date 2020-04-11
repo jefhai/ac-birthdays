@@ -1,5 +1,8 @@
 body { 
-	background-image: linear-gradient(#5ef9ed, #fdc413);
+
+	background: #9dbac5
+
+	/*background-image: linear-gradient(#5ef9ed, #fdc413);*/
 }
 
 .h1 {
@@ -10,7 +13,7 @@ body {
 	width: 260px;
 	font-size: 25px;
 	font-weight: bold;
-	color: #1b78b0;
+	color: #ff3c32;
 	padding: 30px 0px 0px 0px;
 }
 
