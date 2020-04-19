@@ -27,6 +27,7 @@
             <section>
                 <h2 id="name" class="h2"></h2>
                 <div class="portraitDiv">
+                    <img id="confettiImg" class="confettiImage" src="img/confetti.png" />
                     <img id="characterImg" class="characterImage" onclick="next()" class="animalImage" />
                     <img class="nookipediaImg" onclick="nookipedia()" src="img/nookipedia.png" />
                 </div>
@@ -69,20 +70,7 @@
                     });
 
                     loadInitialVillager();
-                    preloadCharacterImages();
                 });
-
-                function preloadCharacterImages() {
-                    for (i = 0; i <= state.characters.length - 1; i++) {
-                        preloadImage(state.characters[i].imageUrl);
-                    }
-                }
-
-                function preloadImage(url)
-                {
-                    var img = new Image();
-                    img.src = url;
-                }
 
                 function isBirthday(birthdate) {
                     var currentDate = moment();
@@ -193,10 +181,12 @@
                     _img.onload = function() {
                         $("#name").text(obj["name"]);
                         $("#birthday").text(obj["birthday"].format("MMM Do YYYY"));
+                        confettiImg.style.visibility = isBirthday(obj["birthday"]) ? "visible" : "hidden";
                     }
                     _img.onerror = function() {
                         $("#name").text(obj["name"]);
                         $("#birthday").text(obj["birthday"].format("MMM Do YYYY"));
+                        confettiImg.style.visibility = isBirthday(obj["birthday"]) ? "visible" : "hidden";
                     }
                     _img.src = obj["image"];
                 }
