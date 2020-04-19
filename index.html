@@ -163,7 +163,7 @@
                     } else {
                         searchState.searchFor = searchFor;
                         searchState.characters = state.characters.filter(function(e, i, a) {
-                            return e["name"].includes(searchFor) || e["name"] == searchFor;
+                            return e["name"].toLowerCase().includes(searchFor.toLowerCase()) || e["name"].toLowerCase() == searchFor.toLowerCase();
                         });
                         if (searchState.characters.length > 0) {
                             searchState.curIndex = 0;                          
