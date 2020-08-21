@@ -56,7 +56,6 @@ body {
 }
 
 .largeButton {
-	-webkit-appearance: none;
 	font-size: 20px;
 	font-weight: bold;
 	border: none;
@@ -69,22 +68,18 @@ body {
 }
 
 .thinButton {
+	-webkit-text-stroke: 1px;
 	-webkit-appearance: none;
-	font-size: 20px;
 	font-weight: bold;
 	border: none;
 	cursor: pointer;
 	color: #ff3c32;
 	background-color: #ffa432;
 	border-radius: 10px;
+    margin: 0 auto;
 	height: 45px;
 	width: 45px;
 	margin: 0px 3px;
-}
-
-.icon {
-	margin: auto;
-	display: block;
 }
 
 .rowDiv {
@@ -156,8 +151,8 @@ body {
 }
 
 .footer {
-	display: block;
-	margin: 0 auto;
+    width: 100%;
+    margin: 0 auto;
 	font-size: 16px;
 	font-weight: small;
 	border: none;
@@ -170,6 +165,7 @@ body {
 	text-decoration: none;
 	font-weight: bold;
 	font-size: 16px;
+	-webkit-appearance: none;
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
