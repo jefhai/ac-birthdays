@@ -41,6 +41,9 @@
                     <button onclick="back()" class="thinButton"><i class="fas fa-chevron-left fa-fw fa-lg" style="vertical-align: middle;"></i></button>
                     <button onclick="next()" class="thinButton"><i class="fas fa-chevron-right fa-fw fa-lg" style="vertical-align: middle;"></i></button>
                 </div>
+                <div class="rowDiv">
+                    <button onclick="today()" class="largeButton">Today</button>
+                </div>
                 <br/>
                 <div class="attrDiv">
                     <p class="attrPar">Created by <a class="attrLink" href="https://jefhai.com">jefhai.com</a></p>
@@ -104,13 +107,17 @@
                         }
                     }
 
-                    load(state.characters[state.curIndex])
+                    load(state.characters[state.curIndex]);
                 }
 
                 function random() {
                     var rngIndex = Math.floor(state.characters.length * Math.random());
                     state.curIndex = rngIndex;
-                    load(state.characters[rngIndex])
+                    load(state.characters[rngIndex]);
+                }
+
+                function today() {
+                    loadInitialVillager();
                 }
 
                 function back() {
@@ -168,7 +175,7 @@
                     if (!e) e = window.event;
                     var keyCode = e.keyCode || e.which;
                     if (keyCode == '13') {
-                        search()
+                        search();
                     }
                 }
 
