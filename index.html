@@ -147,15 +147,17 @@
                         else {
                             searchState.curIndex++;
                         }
-                        load(searchState.characters[searchState.curIndex]);
+                        state.curIndex = searchState.characters[searchState.curIndex]
+                        load(state.curIndex);
                     } else {
                         searchState.searchFor = searchFor;
                         searchState.characters = state.characters.filter(function(e, i, a) {
                             return e["name"].toLowerCase().includes(searchFor.toLowerCase()) || e["name"].toLowerCase() == searchFor.toLowerCase();
                         });
                         if (searchState.characters.length > 0) {
-                            searchState.curIndex = 0;                          
-                            load(searchState.characters[searchState.curIndex]);
+                            searchState.curIndex = 0;   
+                            state.curIndex = searchState.characters[searchState.curIndex]
+                            load(state.curIndex);
                         }
                     }
                 }
