@@ -52,8 +52,7 @@
             <script type="text/javascript">
                 var state = {
                     characters: [],
-                    curIndex: 0,
-                    prevIndex: 0
+                    curIndex: 0
                 }
 
                 $.getJSON("birthdays.json", function(json) {
@@ -62,6 +61,7 @@
                         var imageUrl = "img/characters/"+obj["name"]+".png";
                         var birthday = moment(obj["birthday"], "DD-MM-YYYY");
                         var char = {  
+                            id: obj["id"],
                             name: obj["name"],
                             birthday: birthday,
                             image: imageUrl
@@ -139,24 +139,28 @@
 
                 function search() {
                     var searchFor = $("#search").val().trim();
-                    if (searchFor.length == 0)
+                    if (searchFor.length == 0) {
                         return;
+                    }
+
                     if (searchFor === searchState.searchFor) {
-                        if (searchState.curIndex >= searchState.characters.length)
+                        if (searchState.curIndex >= searchState.characters.length) {
                             searchState.curIndex = 0;
-                        else {
+                        } else {
                             searchState.curIndex++;
                         }
-                        load(searchState.characters[searchState.curIndex]);
                     } else {
+                        searchState.curIndex = 0; 
                         searchState.searchFor = searchFor;
                         searchState.characters = state.characters.filter(function(e, i, a) {
                             return e["name"].toLowerCase().includes(searchFor.toLowerCase()) || e["name"].toLowerCase() == searchFor.toLowerCase();
                         });
-                        if (searchState.characters.length > 0) {
-                            searchState.curIndex = 0;                          
-                            load(searchState.characters[searchState.curIndex]);
-                        }
+                    }
+
+                    if (searchState.characters.length > 0) {
+                        var character = searchState.characters[searchState.curIndex];
+                        state.curIndex = state.characters.findIndex(char => char["id"] === character["id"]);
+                        load(state.characters[state.curIndex]);
                     }
                 }
 
