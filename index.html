@@ -173,7 +173,7 @@
                 }
 
                 function findCharStateIndexByID(id) {
-                    return state.characters.find(char => char["id"] === id);
+                    return state.characters.find(char => char["id"] === id)[0];
                 }
 
                 function stateIndexOfCharID(id) {
