@@ -94,7 +94,7 @@
 
                 function loadInitialVillager() {
                     // Note: sourced birthdays.json from Nintendo is not sorted by birthdate
-                    sortByBirthday(state.characters);
+                    sortByBirthdayAndID(state.characters);
 
                     var i;
                     for (i = 0; i <= state.characters.length - 1; i++) {
@@ -178,12 +178,12 @@
                     }
                 }
 
-                function sortByBirthday(a) {
-                    a.sort(compareBirthday);
+                function sortByBirthdayAndID(a) {
+                    a.sort(compareBirthdayAndID);
                 }
 
-                function compareBirthday(a, b) {
-                    return a.birthday.utc() > b.birthday.utc() ? 1 : -1;  
+                function compareBirthdayAndID(a, b) {
+                    return (a.birthday.utc() > b.birthday.utc()) || ( a.birthday.utc() == b.birthday.utc() && a.id > b.id ) ? 1 : -1;  
                 }
  
                 function load(obj) {
