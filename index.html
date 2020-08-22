@@ -71,6 +71,8 @@
                         state.characters.push(char);
                     });
 
+                    // Note: sourced birthdays.json from Nintendo is not sorted by birthdate
+                    sortByBirthdayAndID(state.characters);
                     loadInitialVillager();
                 });
 
@@ -93,9 +95,6 @@
                 }
 
                 function loadInitialVillager() {
-                    // Note: sourced birthdays.json from Nintendo is not sorted by birthdate
-                    sortByBirthdayAndID(state.characters);
-
                     var i;
                     for (i = 0; i <= state.characters.length - 1; i++) {
                         var charBirthdate = state.characters[i].birthday;
