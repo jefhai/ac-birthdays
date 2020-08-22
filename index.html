@@ -9,6 +9,7 @@
         <link href='https://fonts.googleapis.com/css?family=Dekko' rel='stylesheet'>
         <script src="js/jquery-3.4.1.min.js"></script>
         <script src="js/moment.js"></script>
+        <script src="js/moment-timezone-with-data.js"></script>
         <meta name="description" content="Study Animal Crossing Birthdays">
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-142108931-1"></script>
@@ -61,7 +62,7 @@
                     $.each(json, function () {
                         var obj = this;
                         var imageUrl = "img/characters/"+obj["name"]+".png";
-                        var birthday = moment(obj["birthday"], "DD-MM-YYYY");
+                        var birthday = moment.utc(obj["birthday"], "DD-MM-YYYY");
                         var char = {  
                             id: obj["id"],
                             name: obj["name"],
