@@ -17,13 +17,14 @@ body {
 }
 
 .h2 {
+	height: 70px;
 	display: block;
 	text-align: center;
 	margin: 0 auto;
 	width: 100%;
 	font-size: 55px;
 	color: #ff8305;
-	padding: 10px 0px;
+	padding: 10px 0px 0px 0px;
 }
 
 .h3 {
@@ -109,48 +110,49 @@ body {
 }
 
 .portraitDiv {
-	display: block;
-	margin: 0 auto;
 	position: relative;
-	top: 0;
-	left: 0;
-	width: 330px;
-	height: 330px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.portraitImage {
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
 }
 
 .confettiImage {
-  position: absolute;
-  top: -50px;
-  left: -50px;
-  width: 450px;
-  height: 300px;
-  z-index: 0;
-  border: 0;
+	position: relative;
+	width: 88%;
+ 	max-width: 600px;
+	border: 0;
 }
 
 .characterImage {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 330px;
-  height: 330px;
-  cursor: pointer;
-  z-index: 1;
-  border: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	height: 80%;
+	width: auto;
+	cursor: pointer;
+	z-index: 1;
+	border: 0;
 }
 
 .nookipediaImg {
-  position: absolute;
-  bottom: -10px;
-  left: 240px;
-  width: 70px;
-  height: 70px;
-  cursor: pointer;
-  z-index: 2;
-  border: 0;
+	position: relative;
+	bottom: 10%;
+	left: 120px;
+	width: 70px;
+	height: 70px;
+	cursor: pointer;
+	z-index: 2;
+	border: 0;
 }
 
 .footer {
+	padding: 5px;
     width: 100%;
     margin: 0 auto;
 	font-size: 16px;
@@ -180,3 +182,42 @@ body {
 ::-ms-input-placeholder { /* Microsoft Edge */
   color: #ff8644;
 }
+
+.imgfadein {
+    -webkit-animation: fadein 0.4s 1000ms linear; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 0.4s 1000ms linear; /* Firefox < 16 */
+        -ms-animation: fadein 0.4s 1000ms linear; /* Internet Explorer */
+         -o-animation: fadein 0.4s 1000ms linear; /* Opera < 12.1 */
+            animation: fadein 0.4s 1000ms linear;
+}
+
+@keyframes fadein {
+    from { opacity: 0; transform: scale(0.90); }
+    to   { opacity: 1; transform: scale(1.0); }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+    from { opacity: 0; transform: scale(0.90); }
+    to   { opacity: 1; transform: scale(1.0); }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+    from { opacity: 0; transform: scale(0.90); }
+    to   { opacity: 1; transform: scale(1.0); }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+    from { opacity: 0; transform: scale(0.90); }
+    to   { opacity: 1; transform: scale(1.0); }
+}
+
+/* Opera < 12.1 */
+@-o-keyframes fadein {
+    from { opacity: 0; transform: scale(0.90); }
+    to   { opacity: 1; transform: scale(1.0); }
+}
+
+

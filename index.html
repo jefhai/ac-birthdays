@@ -3,7 +3,7 @@
 	<head>
   		<title>Animal Crossing Birthdays</title>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0"/>
+        <meta name="viewport" content="width=device-width"/>
         <link rel="stylesheet" type="text/css" href="css/main.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
         <link href='https://fonts.googleapis.com/css?family=Dekko' rel='stylesheet'>
@@ -27,9 +27,9 @@
             <section>
                 <h2 id="name" class="h2"></h2>
                 <div class="portraitDiv">
-                    <img id="confettiImg" class="confettiImage" src="img/confetti.png" />
-                    <img id="characterImg" class="characterImage" onclick="next()" class="animalImage" />
-                    <img class="nookipediaImg" onclick="nookipedia()" src="img/nookipedia.png" />
+                    <img id="confettiImg" class="confettiImage portraitImage" src="img/confetti.png" />
+                    <img id="characterImg" class="characterImage portraitImage" onclick="next()" />
+                    <img class="nookipediaImg portraitImage" onclick="nookipedia()" src="img/nookipedia.png" />
                 </div>
                 <h3 id="birthday" class="h3"></h3>
                 <div class="rowDiv"> 
@@ -42,14 +42,13 @@
                     <button onclick="next()" class="thinButton"><i class="fas fa-chevron-right fa-fw fa-lg" style="vertical-align: middle;"></i></button>
                 </div>
                 <div class="rowDiv">
-                    <button onclick="today()" class="largeButton">Today</button>
+                    <button onclick="today()" class="largeButton">Today's Birthday</button>
                 </div>
+                <br/>
                 <br/>
                 <div class="attrDiv">
                     <p class="attrPar">Created by <a class="attrLink" href="https://jefhai.com">jefhai.com</a></p>
                 </div>
-                <br/>
-                <br/>
             </section>
 
             <script type="text/javascript">
