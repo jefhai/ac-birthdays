@@ -27,7 +27,7 @@
                 <h3 class="h3">AC: New Horizons BINGO</h3>
                 <p class="body">To get started select which season you are currently playing. Then select solo or select team if you want to play with friends as a group. The BINGO board will be randomly generated.</p>
                 <br/>
-                <div class="rowDiv">
+                <div class="rowDiv rowDivHeight">
                     <button id="Season0Button" onclick="setSeason(0)" class="largeButton">No Season</button>
                     <button id="Season1Button" onclick="setSeason(1)" class="largeButton">Spring</button>
                     <button id="Season2Button" onclick="setSeason(2)" class="largeButton">Summer</button>
@@ -74,9 +74,9 @@
                         };
                         state.challenges.push(challenge);
                     });
-
-                    setup()
                 });
+
+                setup();
 
                 function setup() {
                     setSeason(state.season)

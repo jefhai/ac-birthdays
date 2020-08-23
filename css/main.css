@@ -67,7 +67,7 @@ hr.rounded {
 .largeButtonDisabled {
 	font-size: 20px;
 	font-weight: bold;
-	border: 1px solid #999999;
+	border: none;
 	cursor: pointer;
 	color: #666666;
 	background-color: #cccccc;
@@ -98,6 +98,10 @@ hr.rounded {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+}
+
+.rowDivHeight {
+	min-height: 100px;
 }
 
 .searchInput {
