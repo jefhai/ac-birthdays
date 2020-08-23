@@ -38,22 +38,18 @@ body {
 	padding: 10px 0px 10px 0px;
 }
 
-.attrDiv {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+hr.rounded {
+	margin: 35px 15% 35px 15%;
+    border: 2.5px solid #ff8305;
+	border-radius: 5px;
 }
 
-.attrPar {
-	color: #ff3c32;
-	font-size: 25px;
-}
-
-.attrLink {
-	color: #ff3c32;
-	text-decoration: none;
-	font-weight: bold;
-	font-size: 25px;
+@media screen and (max-device-width: 600px) and (orientation: portrait){
+	hr.rounded {
+		margin: 35px 10% 35px 10%;
+	    border: 2.5px solid #ff8305;
+		border-radius: 5px;
+	}
 }
 
 .largeButton {
@@ -151,6 +147,28 @@ body {
 	border: 0;
 }
 
+.centerBody {
+	text-align:center; 
+	vertical-align: middle;
+}
+
+.body {
+	padding: 5px;
+    width: 90%;
+    margin: 0 auto;
+	font-size: 20px;
+	font-weight: small;
+	border: none;
+	color: #ff3c32;
+	max-width: 600px;
+}
+
+.bodyLink {
+	color: #ff0909;
+	font-weight: bold;
+	font-size: 18px;
+}
+
 .footer {
 	padding: 5px;
     width: 100%;
@@ -163,11 +181,9 @@ body {
 }
 
 .footerLink {
-	color: #ff3c32;
-	text-decoration: none;
+	color: #ff0909;
 	font-weight: bold;
-	font-size: 16px;
-	-webkit-appearance: none;
+	font-size: 18px;
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -219,5 +235,3 @@ body {
     from { opacity: 0; transform: scale(0.90); }
     to   { opacity: 1; transform: scale(1.0); }
 }
-
-

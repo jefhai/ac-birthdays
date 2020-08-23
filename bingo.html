@@ -24,13 +24,43 @@
         </header>
     	<main>
             <section>
-
+                <h3 class="h3">AC: New Horizons BINGO</h3>
+                <p class="body">To get started select which season you are currently playing. Then select solo or select team if you want to play with friends as a group. The BINGO board will be randomly generated.</p>
+                <br/>
+                <div class="rowDiv">
+                    <button onclick="setSeason(0)" class="largeButton">No Season</button>
+                    <button onclick="setSeason(1)" class="largeButton">Spring</button>
+                    <button onclick="setSeason(2)" class="largeButton">Summer</button>
+                    <button onclick="setSeason(3)" class="largeButton">Fall</button>
+                    <button onclick="setSeason(4)" class="largeButton">Winter</button>
+                    <button onclick="setSeason(5)" class="largeButton">All</button>
+                </div>
+                <div class="rowDiv">
+                    <button onclick="setMode(0)" class="largeButton">Solo</button>
+                    <button onclick="setMode(1)" class="largeButton">Team</button>
+                </div>
+                <br/>
+                <div class="rowDiv">
+                    <button onclick="play()" class="largeButton">Play</button>
+                </div>
+                <hr class="rounded">
+                <div class="rowDiv">
+                    <button onclick="playOriginal()" class="largeButton">Play Original Nintedo Minute BINGO</button>
+                </div>
+                <p class="body">AC Birthday's AC: New Horizons BINGO was inspired by Nintendo Minute. You can play the original BINGO board shown in their YouTube video <a class="bodyLink" href="https://www.youtube.com/watch?v=cwz5KRvqBwI">here</a></p>
+                <hr class="rounded">
+                <h3 class="h3">Challenge Suggestions?</h3>
+                <p class="body">Email your AC: New Horizons BINGO challenge suggestions here:</p>
+                
             </section>
 
             <script type="text/javascript">
                 var state = {
                     challenges: [],
-                    curIndex: 0
+                    activeChallenges: [],
+                    curIndex: 0,
+                    season: 0,
+                    mode: 0
                 }
 
                 $.getJSON("bingo.json", function(json) {
@@ -38,17 +68,55 @@
                         var obj = this;
                         var challenge = {  
                             id: obj["id"],
+                            mode: obj["mode"],
                             season: obj["season"],
-                            season: obj["type"],
+                            type: obj["type"],
                             challenge: obj["challenge"]
                         };
                         state.challenges.push(challenge);
                     });
+
+                    setup()
                 });
+
+                function setup() {
+                    setSeason(state.season)
+                    setMode(state.mode)
+                }
+
+                function play() {
+
+                }
+
+                function playOriginal() {
+                    state.activeChallenges = getNintendoMinuteOriginalBINGO();
+                }
+
+                function setSeason(id) {
+
+                }
+
+                function setMode(id) {
+
+                }
+
+                function getNintendoMinuteOriginalBINGO() {
+                    var challenges = [];
+                    challenges = state.challenges.slice(0, 23)
+                    return challenges;
+                }
+
+                function getRandomChallenges(options) {
+                    var challenges = [];
+
+                    return challenges;
+                }
             </script>
     	</main>
         <footer>
-            <p class="footer"><a class="footerLink" href="https://creativecommons.org/licenses/by-sa/3.0/legalcode">CC BY-SA 3.0</a> ac-birthdays is neither owned by nor affiliated with Nintendo or the creators of Animal Crossing. © 2001 - 2020 Nintendo. Nintendo properties are trademarks of Nintendo. Images and data from <a class="footerLink" href="https://animal-crossing.com">https://animal-crossing.com</a> and <a class="footerLink" href="https://nookipedia.com">https://nookipedia.com</a>.</p>
+            <br/>
+            <br/>
+            <p class="footer"><a class="footerLink" href="https://creativecommons.org/licenses/by-sa/3.0/legalcode">CC BY-SA 3.0</a> ac-birthdays is neither owned by nor affiliated with Nintendo or the creators of Animal Crossing. © 2001 - 2020 Nintendo. Nintendo properties are trademarks of Nintendo. Images and data from <a class="footerLink" href="https://animal-crossing.com">https://animal-crossing.com</a> and <a class="footerLink" href="https://nookipedia.com">https://nookipedia.com</a>. Created by <a class="footerLink"href="https://jefhai.com">jefhai.com</a></p>
         </footer>
     </body>
 </html>
