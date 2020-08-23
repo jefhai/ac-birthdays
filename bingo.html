@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+  		<title>AC Birthdays: BINGO!</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width"/>
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        <link href='https://fonts.googleapis.com/css?family=Dekko' rel='stylesheet'>
+        <script src="js/jquery-3.4.1.min.js"></script>
+        <meta name="description" content="Study Animal Crossing Birthdays">
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-142108931-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-142108931-1');
+        </script>
+    </head>
+    <body style="font-family: 'Dekko';">
+        <header>
+        </header>
+    	<main>
+            <section>
+
+            </section>
+
+            <script type="text/javascript">
+                var state = {
+                    challenges: [],
+                    curIndex: 0
+                }
+
+                $.getJSON("bingo.json", function(json) {
+                    $.each(json, function () {
+                        var obj = this;
+                        var challenge = {  
+                            id: obj["id"],
+                            season: obj["season"],
+                            season: obj["type"],
+                            challenge: obj["challenge"]
+                        };
+                        state.challenges.push(challenge);
+                    });
+                });
+            </script>
+    	</main>
+        <footer>
+            <p class="footer"><a class="footerLink" href="https://creativecommons.org/licenses/by-sa/3.0/legalcode">CC BY-SA 3.0</a> ac-birthdays is neither owned by nor affiliated with Nintendo or the creators of Animal Crossing. © 2001 - 2020 Nintendo. Nintendo properties are trademarks of Nintendo. Images and data from <a class="footerLink" href="https://animal-crossing.com">https://animal-crossing.com</a> and <a class="footerLink" href="https://nookipedia.com">https://nookipedia.com</a>.</p>
+        </footer>
+    </body>
+</html>
