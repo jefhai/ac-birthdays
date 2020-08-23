@@ -5,6 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width"/>
         <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/bingo.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
         <link href='https://fonts.googleapis.com/css?family=Dekko' rel='stylesheet'>
         <script src="js/jquery-3.4.1.min.js"></script>
@@ -23,9 +24,9 @@
         <header>
         </header>
     	<main>
-            <section>
+            <section id="setupSection">
                 <h3 class="h3">AC: New Horizons BINGO</h3>
-                <p class="body">To get started select which season you are currently playing. Then select solo or select team if you want to play with friends as a group. The BINGO board will be randomly generated.</p>
+                <p class="body">To get started, select which season you are currently playing. Then select solo or select team if you want to play with friends as a group. The BINGO board will be randomly generated.</p>
                 <br/>
                 <div class="rowDiv rowDivHeight">
                     <button id="Season0Button" onclick="setSeason(0)" class="largeButton">No Season</button>
@@ -51,6 +52,11 @@
                 <hr class="rounded">
                 <h3 class="h3">Challenge Suggestions?</h3>
                 <p class="body">Have an AC: New Horizons challenge BINGO idea? Email it here:</p>
+            </section>
+
+            <section id="gameSection">
+                <table id="gameTable" class="gameTable">
+                </table>
             </section>
 
             <script type="text/javascript">
@@ -85,10 +91,39 @@
 
                 function play() {
                     state.activeChallenges = getRandomChallenges();
+                    startGame()
                 }
 
                 function playOriginal() {
                     state.activeChallenges = getNintendoMinuteOriginalBINGO();
+                    startGame()
+                }
+
+                function startGame() {
+                    var gameTable = document.getElementById('gameTable');
+                    gameTable.innerHTML = "";
+
+                    console.log(state.activeChallenges)
+
+                    var i, j; 
+                    var count = 0;
+                    for (i = 0; i < 5; i++) {
+                        var row = gameTable.insertRow();
+                        for (j = 0; j < 5; j++) {
+                            var cell = row.insertCell(j);
+                            var newText  = document.createTextNode( state.activeChallenges[count].challenge );
+                            cell.appendChild(newText);
+                            count++;
+                        }
+                    }
+
+                    $('#setupSection').hide();
+                    $('#gameSection').show();
+                }
+
+                function backToSetup() {
+                    $('#setupSection').show();
+                    $('#gameSection').hide();
                 }
 
                 function setFocus(name, focus) {
@@ -114,11 +149,12 @@
 
                 function getNintendoMinuteOriginalBINGO() {
                     var challenges = [];
-                    challenges = state.challenges.slice(0, 23)
+                    challenges = state.challenges.slice(0, 25)
+                    console.log(challenges)
                     return challenges;
                 }
 
-                function getRandomChallenges(options) {
+                function getRandomChallenges() {
                     var challenges = [];
 
                     return challenges;
