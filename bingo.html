@@ -28,16 +28,16 @@
                 <p class="body">To get started select which season you are currently playing. Then select solo or select team if you want to play with friends as a group. The BINGO board will be randomly generated.</p>
                 <br/>
                 <div class="rowDiv">
-                    <button onclick="setSeason(0)" class="largeButton">No Season</button>
-                    <button onclick="setSeason(1)" class="largeButton">Spring</button>
-                    <button onclick="setSeason(2)" class="largeButton">Summer</button>
-                    <button onclick="setSeason(3)" class="largeButton">Fall</button>
-                    <button onclick="setSeason(4)" class="largeButton">Winter</button>
-                    <button onclick="setSeason(5)" class="largeButton">All</button>
+                    <button id="Season0Button" onclick="setSeason(0)" class="largeButton">No Season</button>
+                    <button id="Season1Button" onclick="setSeason(1)" class="largeButton">Spring</button>
+                    <button id="Season2Button" onclick="setSeason(2)" class="largeButton">Summer</button>
+                    <button id="Season3Button" onclick="setSeason(3)" class="largeButton">Fall</button>
+                    <button id="Season4Button" onclick="setSeason(4)" class="largeButton">Winter</button>
+                    <button id="Season5Button" onclick="setSeason(5)" class="largeButton">All</button>
                 </div>
                 <div class="rowDiv">
-                    <button onclick="setMode(0)" class="largeButton">Solo</button>
-                    <button onclick="setMode(1)" class="largeButton">Team</button>
+                    <button id="Mode0Button" onclick="setMode(0)" class="largeButton">Solo</button>
+                    <button id="Mode1Button" onclick="setMode(1)" class="largeButton">Team</button>
                 </div>
                 <br/>
                 <div class="rowDiv">
@@ -91,12 +91,25 @@
                     state.activeChallenges = getNintendoMinuteOriginalBINGO();
                 }
 
-                function setSeason(id) {
+                function setFocus(name, focus) {
+                    $('#'+name).addClass(focus == true ? 'largeButton' :'largeButtonDisabled');
+                    $('#'+name).removeClass(focus == true ? 'largeButtonDisabled' :'largeButton');
+                }
 
+                function setSeason(id) {
+                    state.season = id;
+                    setFocus("Season0Button", id == 0);
+                    setFocus("Season1Button", id == 1);
+                    setFocus("Season2Button", id == 2);
+                    setFocus("Season3Button", id == 3);
+                    setFocus("Season4Button", id == 4);
+                    setFocus("Season5Button", id == 5);
                 }
 
                 function setMode(id) {
-
+                    state.mode = id;
+                    setFocus("Mode0Button", id == 0);
+                    setFocus("Mode1Button", id == 1);
                 }
 
                 function getNintendoMinuteOriginalBINGO() {

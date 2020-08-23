@@ -64,6 +64,18 @@ hr.rounded {
 	margin: 0px 3px;
 }
 
+.largeButtonDisabled {
+	font-size: 20px;
+	font-weight: bold;
+	border: 1px solid #999999;
+	cursor: pointer;
+	color: #666666;
+	background-color: #cccccc;
+	border-radius: 10px;
+	padding: 10px 20px;
+	margin: 0px 3px;
+}
+
 .thinButton {
 	-webkit-text-stroke: 1px;
 	-webkit-appearance: none;
