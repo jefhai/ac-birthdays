@@ -1,3 +1,27 @@
 .gameTable {
-	
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.challengeButton {
+	width: 105px;
+	height: 105px;
+	color: #000000;
+	background: #f2b137;
+	border: 0px;
+	border-radius: 8px;
+}
+
+.challengeButtonSelected {
+	width: 105px;
+	height: 105px;
+	color: #000000;
+	background: #fa5f3c;
+	border: 0px;
+	border-radius: 8px;
+}
+
+.challengeText {
+	font-size: 14px;
+	font-weight: bold: 
 }

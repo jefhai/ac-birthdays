@@ -52,9 +52,14 @@
                 <hr class="rounded">
                 <h3 class="h3">Challenge Suggestions?</h3>
                 <p class="body">Have an AC: New Horizons challenge BINGO idea? Email it here:</p>
+                <p class="body centerBody"><a class="bodyLink" href="mailto:acbirthdays1@gmail.com">acbirthdays1@gmail.com</a></p>
             </section>
 
             <section id="gameSection">
+                <br/>
+                <button onclick="backToSetup()" class="thinButton"><i class="fas fa-chevron-left fa-fw fa-lg" style="vertical-align: middle;"></i></button>
+                <br/>
+                <br/>
                 <table id="gameTable" class="gameTable">
                 </table>
             </section>
@@ -76,7 +81,8 @@
                             mode: obj["mode"],
                             season: obj["season"],
                             type: obj["type"],
-                            challenge: obj["challenge"]
+                            challenge: obj["challenge"],
+                            completed: false
                         };
                         state.challenges.push(challenge);
                     });
@@ -87,6 +93,7 @@
                 function setup() {
                     setSeason(state.season)
                     setMode(state.mode)
+                    $('#gameSection').hide();
                 }
 
                 function play() {
@@ -103,22 +110,33 @@
                     var gameTable = document.getElementById('gameTable');
                     gameTable.innerHTML = "";
 
-                    console.log(state.activeChallenges)
-
                     var i, j; 
                     var count = 0;
                     for (i = 0; i < 5; i++) {
                         var row = gameTable.insertRow();
                         for (j = 0; j < 5; j++) {
+                            state.activeChallenges[count].completed = false;
+
                             var cell = row.insertCell(j);
-                            var newText  = document.createTextNode( state.activeChallenges[count].challenge );
-                            cell.appendChild(newText);
+                            cell.innerHTML = makeCellButtonHTML(count, state.activeChallenges[count].challenge);
                             count++;
                         }
                     }
 
                     $('#setupSection').hide();
                     $('#gameSection').show();
+                }
+
+                function makeCellButtonHTML(id, text) {
+                    var html = '<button id="Challenge' + id + 'Button" class="challengeButton" onclick="toggleChallenge(' + id + ')"><p class="challengeText">' + text + '</p></button>';
+                    return html;
+                }
+
+                function toggleChallenge(id) {
+                    var completed = state.activeChallenges[id].completed;
+                    $('#Challenge'+id+'Button').addClass(completed == true ? 'challengeButton' :'challengeButtonSelected');
+                    $('#Challenge'+id+'Button').removeClass(completed == true ? 'challengeButtonSelected' :'challengeButton');
+                    state.activeChallenges[id].completed = !completed;
                 }
 
                 function backToSetup() {
@@ -149,13 +167,27 @@
 
                 function getNintendoMinuteOriginalBINGO() {
                     var challenges = [];
-                    challenges = state.challenges.slice(0, 25)
-                    console.log(challenges)
+                    challenges = state.challenges.slice(0, 25);
                     return challenges;
+                }
+
+                function shuffleArray(array) {
+                    for (var i = array.length - 1; i > 0; i--) {
+                        var j = Math.floor(Math.random() * (i + 1));
+                        var temp = array[i];
+                        array[i] = array[j];
+                        array[j] = temp;
+                    }
                 }
 
                 function getRandomChallenges() {
                     var challenges = [];
+
+                    var challenges = state.challenges.filter(challenge => (state.mode == 1 || challenge.mode == 0) && (challenge.season == 0 || challenge.season == state.season || state.season == 5));
+
+                    shuffleArray(challenges);
+
+                    challenges = challenges.slice(0, 25);
 
                     return challenges;
                 }

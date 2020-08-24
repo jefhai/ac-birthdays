@@ -1,176 +1,191 @@
-[{
+[
+	{
 		"id": 1,
-		"mode": "solo",
-		"season": "summer",
+		"mode": 0,
+		"season": 2,
 		"type": "scavenge",
 		"challenge": "Find a summer shell"
 	},
 	{
 		"id": 2,
-		"mode": "solo",
-		"season": "none",
+		"mode": 0,
+		"season": 0,
 		"type": "activity",
 		"challenge": "Change the music in the DJ booth"
 	},
 	{
 		"id": 3,
-		"mode": "solo",
-		"season": "none",
+		"mode": 0,
+		"season": 0,
 		"type": "activity",
 		"challenge": "Break a rock"
 	},
 	{
 		"id": 4,
-		"mode": "solo",
-		"season": "none",
+		"mode": 0,
+		"season": 0,
 		"type": "fish",
 		"challenge": "Catch a black bass"
 	},
 	{
 		"id": 5,
-		"mode": "team",
-		"season": "none",
+		"mode": 1,
+		"season": 0,
 		"type": "activity",
 		"challenge": "Buy & wrap a gift for each other"
 	},
 	{
 		"id": 6,
-		"mode": "solo",
-		"season": "none",
+		"mode": 0,
+		"season": 0,
 		"type": "fossil",
 		"challenge": "Dig up three fossils"
 	},
 	{
 		"id": 7,
-		"mode": "solo",
-		"season": "none",
+		"mode": 0,
+		"season": 0,
 		"type": "bug",
 		"challenge": "Catch a beetle"
 	},
 	{
 		"id": 8,
-		"mode": "solo",
-		"season": "none",
+		"mode": 0,
+		"season": 0,
 		"type": "scavenge",
 		"challenge": "Gather 5 of the same type of wood"
 	},
 	{
 		"id": 9,
-		"mode": "solo",
-		"season": "none",
+		"mode": 0,
+		"season": 0,
 		"type": "activity",
 		"challenge": "Don't get stung by wasps"
 	},
 	{
 		"id": 10,
-		"mode": "solo",
-		"season": "none",
+		"mode": 0,
+		"season": 0,
 		"type": "activity",
 		"challenge": "Flush the golden toilet"
 	},
 	{
 		"id": 11,
-		"mode": "solo",
-		"season": "none",
+		"mode": 0,
+		"season": 0,
 		"type": "bug",
 		"challenge": "Catch a cicada"
 	},
 	{
 		"id": 12,
-		"mode": "solo",
-		"season": "none",
+		"mode": 0,
+		"season": 0,
 		"type": "activity",
 		"challenge": "Take a photo diving into the ocean"
 	},
 	{
 		"id": 13,
-		"mode": "solo",
-		"season": "none",
+		"mode": 0,
+		"season": 0,
 		"type": "scavenge",
 		"challenge": "Collect one of each fruit"
 	},
 	{
 		"id": 14,
-		"mode": "solo",
-		"season": "none",
+		"mode": 0,
+		"season": 0,
 		"type": "activity",
 		"challenge": "Shake the bells out of a tree"
 	},
 	{
 		"id": 15,
-		"mode": "solo",
-		"season": "none",
+		"mode": 0,
+		"season": 0,
 		"type": "activity",
 		"challenge": "Purchase and wear a new outfit from Able Sisters"
 	},
 	{
 		"id": 16,
-		"mode": "solo",
-		"season": "none",
+		"mode": 0,
+		"season": 0,
 		"type": "activity",
 		"challenge": "Visit an island resident and get a DIY recipe"
 	},
 	{
 		"id": 17,
-		"mode": "solo",
-		"season": "none",
+		"mode": 0,
+		"season": 0,
 		"type": "activity",
 		"challenge": "Look at the t-rex fossil in the museum"
 	},
 	{
 		"id": 18,
-		"mode": "solo",
-		"season": "none",
+		"mode": 0,
+		"season": 0,
 		"type": "activity",
 		"challenge": "Shoot down a balloon"
 	},
 	{
 		"id": 19,
-		"mode": "solo",
-		"season": "none",
+		"mode": 0,
+		"season": 0,
 		"type": "bug",
 		"challenge": "Catch a butterfly"
 	},
 	{
 		"id": 19,
-		"mode": "solo",
-		"season": "none",
+		"mode": 0,
+		"season": 0,
 		"type": "fish",
 		"challenge": "Catch an octopus"
 	},
 	{
 		"id": 20,
-		"mode": "solo",
-		"season": "none",
+		"mode": 0,
+		"season": 0,
 		"type": "activity",
 		"challenge": "Collect and sell items for 10K"
 	},
 	{
 		"id": 21,
-		"mode": "solo",
-		"season": "none",
+		"mode": 0,
+		"season": 0,
 		"type": "fish",
 		"challenge": "Catch a sea bass"
 	},
 	{
 		"id": 22,
-		"mode": "solo",
-		"season": "none",
+		"mode": 0,
+		"season": 0,
 		"type": "activity",
 		"challenge": "Dig up 5 clams"
 	},
 	{
 		"id": 23,
-		"mode": "solo",
-		"season": "none",
+		"mode": 0,
+		"season": 0,
 		"type": "activity",
 		"challenge": "Swim a full lap around the island"
 	},
 	{
 		"id": 24,
-		"mode": "solo",
-		"season": "none",
+		"mode": 0,
+		"season": 0,
 		"type": "fish",
 		"challenge": "Catch a shark"
+	},
+	{
+		"id": 25,
+		"mode": 0,
+		"season": 0,
+		"type": "activity",
+		"challenge": "Place an inside furniture outside"
+	},
+	{
+		"id": 26,
+		"mode": 0,
+		"season": 0,
+		"type": "activity",
+		"challenge": "Plant a money tree"
 	}
 ]
