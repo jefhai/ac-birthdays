@@ -17,7 +17,7 @@ json.each do |item|
 
 		url = "http://www.animal-crossing.com/assets/img/characters/" + image
 
-		open(url) {|f|
+		URI.open(url) {|f|
    			File.open("img/characters/" + charName + ".png", "wb") do |file|
 				file.puts f.read
 			end
